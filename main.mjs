@@ -1,6 +1,6 @@
 'use strict'
 
-import GameManager from '/user/gameManager.mjs'
+import GameManager from '/user/gameManager'
 
 export function loop() {
     GameManager.loop()

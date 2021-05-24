@@ -1,7 +1,8 @@
 'use strict'
 
-import Sorting from '/user/utils/sorting.mjs'
-import Component from '/user/utils/component.mjs'
+import Arena from '/user/arena'
+import Sorting from '/user/utils/sorting'
+import Component from '/user/utils/component'
 
 class FleeStrategy extends Component {
     constructor(creep) {
@@ -23,7 +24,7 @@ class FleeStrategy extends Component {
     update() {
         const creep = this.creep
 
-        let enemiesInRange = arena.enemyCreeps
+        let enemiesInRange = Arena.enemyCreeps
             .filter(i => i.canAttack && i.inRangeTo(creep, i.weapon.range))
 
         if (enemiesInRange.length === 0) return

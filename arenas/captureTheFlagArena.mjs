@@ -1,14 +1,11 @@
 'use strict'
 
-import {
-    getObjectsByPrototype,
-} from '/game/utils'
+import { getObjectsByPrototype } from '/game/utils'
+import * as arena from '/arena'
 
-import Arena from '/user/arenas/arena.mjs'
-import CaptureTheFlagBasic from '/user/strategies/captureTheFlagBasic.mjs'
-
-import Flag from '/user/prototypes/flag.mjs'
-import Bridge from '/user/bridge.mjs'
+import Arena from '/user/arenas/arena'
+import CaptureTheFlagBasic from '/user/strategies/captureTheFlagBasic'
+import Bridge from '/user/bridge'
 
 class CaptureTheFlagArena extends Arena {
     get strategy() {
@@ -27,7 +24,7 @@ class CaptureTheFlagArena extends Arena {
     }
 
     get flags() {
-        return getObjectsByPrototype(Flag)
+        return getObjectsByPrototype(arena.Flag)
     }
 
     get myFlag() {

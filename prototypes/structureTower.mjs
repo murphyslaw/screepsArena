@@ -5,20 +5,10 @@ import {
     TOWER_RANGE,
 } from '/game/constants'
 
-import {
-    // getTime,
-    // getObjectById,
-    // getObjects,
-    // getObjectsByPrototype,
-    // getHeapStatistics,
-    // findPath,
-    // getDirection,
-    getRange,
-} from '/game/utils'
+import { StructureTower } from '/game/prototypes'
 
-import {
-    StructureTower,
-} from '/game/prototypes';
+import Arena from '/user/arena'
+import Sorting from '/user/utils/sorting'
 
 const prototype = StructureTower.prototype;
 
@@ -35,9 +25,9 @@ prototype.start = function () {}
 
 prototype.update = function () {
     const attackRange = TOWER_OPTIMAL_RANGE + 5
-    const enemiesInRange = arena.enemyCreeps
-        .filter(i => getRange(i, this) <= attackRange && i.canMove)
-        .sort((a, b) => a.hits - b.hits)
+    const enemiesInRange = Arena.enemyCreeps
+        .filter(i => i.inRangeTo(this, attackRange) && i.canMove)
+        .sort(Sorting.byHits())
 
     if (enemiesInRange.length > 0) {
         let target = enemiesInRange[0]
@@ -47,10 +37,10 @@ prototype.update = function () {
         return
     }
 
-    const healRange = TOWER_RANGE;
-    const healTargets = arena.myCreeps
-        .filter(i => i.isWounded && getRange(i, this) <= healRange)
-        .sort((a, b) => a.hits - b.hits)
+    const healRange = TOWER_RANGE
+    const healTargets = Arena.myCreeps
+        .filter(i => i.isWounded && i.inRangeTo(this, healRange))
+        .sort(Sorting.byHits())
 
     if (healTargets.length > 0) {
         let target = healTargets[0]

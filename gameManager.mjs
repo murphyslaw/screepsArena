@@ -4,13 +4,10 @@ import * as constants from '/game/constants'
 
 import _ from '/user/lodash-es/lodash'
 
-// import Arena from '/user/arenas/captureTheFlagArena.mjs'
-import Arena from `/user/arenas/spawnAndSwampArena.mjs`
-
-import RoomObject from '/user/prototypes/roomObject.mjs'
-import Stats from '/user/stats.mjs'
-import TickCache from '/user/utils/tickCache.mjs'
-import Sandbox from '/user/utils/sandbox.mjs'
+import Arena from '/user/arena'
+import Stats from '/user/stats'
+import TickCache from '/user/utils/tickCache'
+import Sandbox from '/user/utils/sandbox'
 
 class GameManager {
     constructor() {
@@ -19,20 +16,18 @@ class GameManager {
         }
 
         global._ = _
-        global.tickCache = new TickCache()
-        global.arena = new Arena()
 
         this.components = [
-            global.tickCache,
-            global.arena,
-            global.arena.strategy,
-            new Stats(),
-            new Sandbox(),
+            TickCache,
+            Arena,
+            Arena.strategy,
+            Stats,
+            Sandbox,
         ]
     }
 
     get isFirstTick() {
-        return arena.time === 1
+        return Arena.time === 1
     }
 
     loop() {

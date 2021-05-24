@@ -1,11 +1,13 @@
 'use strict'
 
+import Arena from '/user/arena'
+
 class SpawnAndSwampBasic {
     constructor() {}
 
     start() {
-        this.attacker = arena.mySpawn.spawnCreep([MOVE, ATTACK])
-        this.enemySpawn = arena.enemySpawn
+        this.attacker = Arena.mySpawn.spawnCreep([MOVE, ATTACK])
+        this.enemySpawn = Arena.enemySpawn
     }
 
     update() {

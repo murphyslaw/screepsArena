@@ -18,4 +18,4 @@ class TickCache {
     }
 }
 
-export default TickCache
+export default new TickCache()

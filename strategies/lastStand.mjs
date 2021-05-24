@@ -1,6 +1,6 @@
 'use strict'
 
-import FleeStrategy from '/user/strategies/fleeStrategy.mjs'
+import FleeStrategy from '/user/strategies/fleeStrategy'
 
 class LastStand extends FleeStrategy {
     get meleeHitsPercentage() {

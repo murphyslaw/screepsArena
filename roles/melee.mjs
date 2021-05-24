@@ -1,31 +1,31 @@
-'use strict'
+// 'use strict'
 
-import AttackStrategy from '/user/strategies/attackStrategy.mjs'
-import MovementStrategy from '/user/strategies/movementStrategy.mjs'
-import LastStand from '/user/strategies/lastStand.mjs'
+// import AttackStrategy from '/user/strategies/attackStrategy'
+// import MovementStrategy from '/user/strategies/movementStrategy'
+// import LastStand from '/user/strategies/lastStand'
 
-class Melee {
-    constructor(creep) {
-        this.creep = creep
+// class Melee {
+//     constructor(creep) {
+//         this.creep = creep
 
-        this.strategies = [
-            new AttackStrategy(creep),
-            new MovementStrategy(creep),
-            new LastStand(creep),
-        ]
-    }
+//         this.strategies = [
+//             new AttackStrategy(creep),
+//             new MovementStrategy(creep),
+//             new LastStand(creep),
+//         ]
+//     }
 
-    start() { }
+//     start() { }
 
-    update() {
-        for (const strategy of this.strategies) {
-            strategy.apply()
-        }
-    }
+//     update() {
+//         for (const strategy of this.strategies) {
+//             strategy.apply()
+//         }
+//     }
 
-    toString() {
-        return this.constructor.name
-    }
-}
+//     toString() {
+//         return this.constructor.name
+//     }
+// }
 
-export default Melee
+// export default Melee

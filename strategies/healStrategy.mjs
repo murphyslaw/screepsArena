@@ -1,7 +1,8 @@
 'use strict'
 
-import Sorting from '/user/utils/sorting.mjs'
-import Component from '/user/utils/component.mjs'
+import Arena from '/user/arena'
+import Sorting from '/user/utils/sorting'
+import Component from '/user/utils/component'
 
 class HealStrategy extends Component {
     constructor(creep) {
@@ -14,7 +15,7 @@ class HealStrategy extends Component {
         const creep = this.creep
         const weapon = creep.weapon
 
-        let woundedInRange = arena.myCreeps
+        let woundedInRange = Arena.myCreeps
             .filter(i => i.isWounded && creep.inRangeTo(i, weapon.range))
 
         if (woundedInRange.length === 0) return

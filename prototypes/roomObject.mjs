@@ -1,11 +1,6 @@
 'use strict'
 
-import {
-    RoomObject,
-    // Creep,
-    // StructureTower,
-    // StructureWall,
-} from '/game/prototypes'
+import { RoomObject } from '/game/prototypes'
 
 const prototype = RoomObject.prototype
 

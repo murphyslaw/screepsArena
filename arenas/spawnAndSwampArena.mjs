@@ -1,15 +1,10 @@
 'use strict'
 
-import {
-    getObjectsByPrototype,
-} from '/game/utils'
+import { getObjectsByPrototype } from '/game/utils'
 
-import {
-    StructureSpawn,
-} from '/game/prototypes'
-
-import Arena from '/user/arenas/arena.mjs'
-import SpawnAndSwampBasic from '/user/strategies/spawnAndSwampBasic.mjs'
+import Arena from '/user/arenas/arena'
+import SpawnAndSwampBasic from '/user/strategies/spawnAndSwampBasic'
+import StructureSpawn from '/user/prototypes/structureSpawn'
 
 class SpawnAndSwampArena extends Arena {
     get strategy() {

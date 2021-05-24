@@ -4,13 +4,14 @@ import {
     getRange
 } from '/game/utils'
 
-import Group from '/user/group.mjs'
-import HealStrategy from '/user/strategies/healStrategy.mjs'
-import AttackStrategy from '/user/strategies/attackStrategy.mjs'
-import MovementStrategy from '/user/strategies/movementStrategy.mjs'
-import MoveToGoal from '/user/strategies/moveToGoal.mjs'
-import StayOutOfHarm from '/user/strategies/stayOutOfHarm.mjs'
-import LastStand from '/user/strategies/lastStand.mjs'
+import Arena from '/user/arena'
+import Group from '/user/group'
+import HealStrategy from '/user/strategies/healStrategy'
+import AttackStrategy from '/user/strategies/attackStrategy'
+import MovementStrategy from '/user/strategies/movementStrategy'
+import MoveToGoal from '/user/strategies/moveToGoal'
+import StayOutOfHarm from '/user/strategies/stayOutOfHarm'
+import LastStand from '/user/strategies/lastStand'
 
 class CaptureTheFlagBasic {
     static DELAY = 150
@@ -43,18 +44,18 @@ class CaptureTheFlagBasic {
 
         if (team === 'defenders') {
             goalDefinition = {
-                'Melee': arena.myFlag,
-                'Ranged': arena.myFlag,
-                'Healer': arena.myCornerPosition,
+                'Melee': Arena.myFlag,
+                'Ranged': Arena.myFlag,
+                'Healer': Arena.myCornerPosition,
             }
         }
 
         if (team === 'attackers') {
-            if (arena.time <= CaptureTheFlagBasic.DELAY) {
+            if (Arena.time <= CaptureTheFlagBasic.DELAY) {
                 goalDefinition = {
-                    'Melee': arena.myTower,
-                    'Ranged': arena.myTower,
-                    'Healer': arena.myTower,
+                    'Melee': Arena.myTower,
+                    'Ranged': Arena.myTower,
+                    'Healer': Arena.myTower,
                 }
             } else {
                 goalDefinition = {
@@ -75,7 +76,7 @@ class CaptureTheFlagBasic {
         if (team === 'defenders') {
             alertRange = 10
         } else if (team === 'attackers') {
-            alertRange = arena.time <= CaptureTheFlagBasic.DELAY ? 10 : 20
+            alertRange = Arena.time <= CaptureTheFlagBasic.DELAY ? 10 : 20
         }
 
         return alertRange
@@ -83,8 +84,8 @@ class CaptureTheFlagBasic {
 
     start() {
         this.capturePoints = [
-            arena.bridges[_.random(arena.bridges.length - 1)],
-            arena.enemyFlag,
+            Arena.bridges[_.random(Arena.bridges.length - 1)],
+            Arena.enemyFlag,
         ]
 
         console.log('Current Capture Point', this.currentCapturePoint)
@@ -92,7 +93,7 @@ class CaptureTheFlagBasic {
         const defenders = new Group('defenders')
         const attackers = new Group('attackers')
 
-        for (const creep of arena.myCreeps) {
+        for (const creep of Arena.myCreeps) {
             let components
 
             if (creep.isMelee) {
@@ -142,13 +143,13 @@ class CaptureTheFlagBasic {
 
         this.groups.push(defenders, attackers)
 
-        arena.myTower.start()
+        Arena.myTower.start()
     }
 
     findTarget(group) {
         const position = group.leader
         const alertRange = this.alertRange(group)
-        const enemies = arena.enemyCreeps
+        const enemies = Arena.enemyCreeps
             .filter(i => i.inRangeTo(position, alertRange))
             .sort((a, b) => a.hits == b.hits ? getRange(a, position) - getRange(b, position) : a.hits - b.hits)
 
@@ -172,7 +173,7 @@ class CaptureTheFlagBasic {
             group.update()
         }
 
-        const tower = arena.myTower
+        const tower = Arena.myTower
         if (tower) tower.update()
     }
 }

@@ -1,16 +1,5 @@
 'use strict'
 
-import {
-    // getTime,
-    // getObjectById,
-    // getObjects,
-    // getObjectsByPrototype,
-    // getHeapStatistics,
-    // findPath,
-    // getDirection,
-    getRange,
-} from '/game/utils'
-
 class FlagGuard {
     constructor(creep) {
         this.creep = creep
@@ -18,8 +7,6 @@ class FlagGuard {
 
     start() {
         this.flag = arena.myFlag
-
-        console.log(this.creep)
     }
 
     get targets() {
@@ -29,8 +16,8 @@ class FlagGuard {
         const flag = this.flag
 
         const targets = enemyCreeps
-            .filter(i => getRange(i, creep) <= alertRange)
-            .sort((a, b) => getRange(a, flag) - getRange(b, flag))
+            .filter(i => i.inRangeTo(creep, alertRange))
+            .sort(Sorting.byRangeTo(flag))
 
         return targets
     }

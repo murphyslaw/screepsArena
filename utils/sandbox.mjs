@@ -6,4 +6,4 @@ class Sandbox {
     update() {}
 }
 
-export default Sandbox
+export default new Sandbox()

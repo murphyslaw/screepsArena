@@ -1,6 +1,6 @@
 'use strict'
 
-import Component from '/user/utils/component.mjs'
+import Component from '/user/utils/component'
 
 class MoveToGoal extends Component {
     constructor(creep) {

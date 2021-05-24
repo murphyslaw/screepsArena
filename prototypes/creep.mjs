@@ -1,31 +1,14 @@
 'use strict'
 
 import {
-    ATTACK,
-    RANGED_ATTACK,
-    HEAL,
-    MOVE,
-} from '/game/constants';
-
-import {
-    Creep,
-} from '/game/prototypes';
+    getDirection,
+} from '/game/utils'
 
 import {
     searchPath,
-    // CostMatrix,
 } from '/game/path-finder'
 
-import {
-    // getTime,
-    // getObjectById,
-    // getObjects,
-    // getObjectsByPrototype,
-    // getHeapStatistics,
-    // findPath,
-    getDirection,
-    // getRange,
-} from '/game/utils'
+import { Creep } from '/game/prototypes'
 
 import HealerWeapon from '/user/weapons/healerWeapon'
 import MeleeWeapon from '/user/weapons/meleeWeapon'
@@ -36,7 +19,7 @@ const prototype = Creep.prototype
 Object.defineProperties(prototype, {
     'isDead': {
         get: function () {
-            return this.body === undefined
+            return !this.exists
         },
         configurable: true,
     },
@@ -107,7 +90,6 @@ prototype.toString = function() {
 
 prototype.start = function(components) {
     this.components = components
-    this.initialPos = { x: arena.myTower.x, y: arena.myTower.y }
 
     switch (true) {
         case this.isRanged:

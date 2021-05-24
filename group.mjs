@@ -1,6 +1,7 @@
 'use strict'
 
-import Sorting from '/user/utils/sorting.mjs'
+import TickCache from '/user/utils/tickCache'
+import Sorting from '/user/utils/sorting'
 
 class Group {
     constructor(team) {
@@ -10,14 +11,14 @@ class Group {
     }
 
     get members() {
-        if (!tickCache.has(`members-${this.team}`)) {
+        if (!TickCache.has(`members-${this.team}`)) {
             for (const creep of this._members) {
                 if (creep.isDead) {
                     this.delete(creep)
                 }
             }
 
-            tickCache.add(`members-${this.team}`)
+            TickCache.add(`members-${this.team}`)
         }
 
         return this._members

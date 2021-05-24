@@ -1,31 +1,31 @@
-'use strict'
+// 'use strict'
 
-import AttackStrategy from '/user/strategies/attackStrategy.mjs'
-import MovementStrategy from '/user/strategies/movementStrategy.mjs'
-import StayOutOfHarm from '/user/strategies/stayOutOfHarm.mjs'
+// import AttackStrategy from '/user/strategies/attackStrategy'
+// import MovementStrategy from '/user/strategies/movementStrategy'
+// import StayOutOfHarm from '/user/strategies/stayOutOfHarm'
 
-class Ranged {
-    constructor(creep) {
-        this.creep = creep
+// class Ranged {
+//     constructor(creep) {
+//         this.creep = creep
 
-        this.strategies = [
-            new AttackStrategy(creep),
-            new MovementStrategy(creep),
-            new StayOutOfHarm(creep),
-        ]
-    }
+//         this.strategies = [
+//             new AttackStrategy(creep),
+//             new MovementStrategy(creep),
+//             new StayOutOfHarm(creep),
+//         ]
+//     }
 
-    start() {}
+//     start() {}
 
-    update() {
-        for (const strategy of this.strategies) {
-            strategy.apply()
-        }
-    }
+//     update() {
+//         for (const strategy of this.strategies) {
+//             strategy.apply()
+//         }
+//     }
 
-    toString() {
-        return this.constructor.name
-    }
-}
+//     toString() {
+//         return this.constructor.name
+//     }
+// }
 
-export default Ranged
+// export default Ranged
