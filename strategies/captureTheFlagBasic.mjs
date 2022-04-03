@@ -166,6 +166,8 @@ class CaptureTheFlagBasic {
                 console.log('Current Capture Point', this.currentCapturePoint)
             }
 
+            if (!group.leader) continue
+
             group.alertRange = this.alertRange(group)
             group.targetDefinition = this.targetDefinition(group)
             group.goalDefinition = this.goalDefinition(group)
