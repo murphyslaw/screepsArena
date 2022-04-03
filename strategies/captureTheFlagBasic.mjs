@@ -124,8 +124,6 @@ class CaptureTheFlagBasic {
                         new StayOutOfHarm(creep),
                     ]
                 }
-
-
             }
 
             if (creep.isHealer) {
