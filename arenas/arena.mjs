@@ -1,14 +1,14 @@
 'use strict'
 
 import { arenaInfo } from '/game'
-import { getTime, getObjectsByPrototype } from '/game/utils'
+import { getTicks, getObjectsByPrototype } from '/game/utils'
 
 import Creep from '/user/prototypes/creep'
 import StructureTower from '/user/prototypes/structureTower'
 
 class Arena {
     get time() {
-        return getTime()
+        return getTicks()
     }
 
     get name() {
