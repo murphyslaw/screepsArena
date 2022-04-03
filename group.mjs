@@ -24,6 +24,10 @@ class Group {
         return this._members
     }
 
+    get isEmpty() {
+        return this._members.length === 0
+    }
+
     get wounded() {
         const wounded = this.members
             .filter(i => i.isWounded)
@@ -58,10 +62,9 @@ class Group {
     }
 
     update() {
+        if (this.isEmpty) return
+
         const members = this.members
-
-        if (members.length === 0) return
-
         const leader = this.leader
         const target = this.targetDefinition
         const goal = this.goalDefinition
