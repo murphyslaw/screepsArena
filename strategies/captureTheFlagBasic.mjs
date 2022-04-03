@@ -173,8 +173,9 @@ class CaptureTheFlagBasic {
             group.update()
         }
 
-        const tower = Arena.myTower
-        if (tower) tower.update()
+        for (const tower of Arena.myTowers) {
+            tower.update()
+        }
     }
 }
 
