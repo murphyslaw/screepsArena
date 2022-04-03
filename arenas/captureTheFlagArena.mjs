@@ -35,8 +35,8 @@ class CaptureTheFlagArena extends Arena {
         return this.flags.find(i => !i.my)
     }
 
-    get myTower() {
-        return this.towers.find(i => i.my)
+    get myTowers() {
+        return this.towers.filter(i => i.my)
     }
 
     get enemyTower() {

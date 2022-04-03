@@ -53,9 +53,9 @@ class CaptureTheFlagBasic {
         if (team === 'attackers') {
             if (Arena.time <= CaptureTheFlagBasic.DELAY) {
                 goalDefinition = {
-                    'Melee': Arena.myTower,
-                    'Ranged': Arena.myTower,
-                    'Healer': Arena.myTower,
+                    'Melee': Arena.myTowers[0],
+                    'Ranged': Arena.myTowers[0],
+                    'Healer': Arena.myTowers[0],
                 }
             } else {
                 goalDefinition = {
@@ -143,7 +143,9 @@ class CaptureTheFlagBasic {
 
         this.groups.push(defenders, attackers)
 
-        Arena.myTower.start()
+        for (const tower of Arena.myTowers) {
+            tower.start()
+        }
     }
 
     findTarget(group) {
